@@ -1,0 +1,117 @@
+<div class="header-category">
+    <div class="container">
+        <ul *ngIf="list_danhmuc && list_danhmuc.length > 0">
+
+            <li *ngFor="let dm of list_danhmuc">
+                <a [routerLink]="['/category',dm.maDanhMuc]" title="{{dm.tenDanhMuc}}">
+                    <span class="icon"><img class="img-responsive"
+                    src="/assets/images/{{dm.anhDanhMuc}}"
+                    alt="icon"></span> {{dm.tenDanhMuc}}
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+<h1 class="hidden">AnhCoffee - </h1>
+<section class="bread-crumb">
+    <span class="crumb-border"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 a-left">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a itemprop="url" [routerLink]="['/']" title="Trang chủ"><span >Trang chủ</span></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+
+                        <li><strong><span >Liên hệ</span></strong></li>
+
+                    </ul>
+                </div>
+
+                <div class="title-page ">Liên hệ</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 margin-bottom-30 margin-top-20">
+            <div class="box-maps">
+                <div class="iFrameMap">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14912.314425084112!2d105.9388856763147!3d20.868881677361472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135b06796b9ecad%3A0x319bcdb6ae7c000a!2zROG6oSBUcuG6oWNoLCBLaG_DoWkgQ2jDonUsIEjGsG5nIFnDqm4sIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1669493341034!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h1 class="title-head page_title margin-bottom-5">Liên hệ</h1>
+            <p></p>
+            <div class="contact-box-info clearfix margin-bottom-30">
+                <ul class="list-menu">
+
+                    <li>Địa chỉ: <span>Yên Vĩnh, Dạ Trạch, Khoái Châu, Hưng Yên</span></li>
+                    <li>Điện thoại: <a href="tel:0567233336">0567 233 336</a></li>
+                    <li>Email: <a href="mailto:hataianh2512@gmail.com">hataianh2512@gmail.com</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-sm-8">
+            <div id="login">
+                <h2 class="title-head"><span> </span></h2>
+                <form accept-charset="utf-8" action="https://halucafe.mysapo.net/contact" id="contact" method="post">
+                    <input name="FormType" type="hidden" value="contact" />
+                    <input name="utf8" type="hidden" value="true" /><input type="hidden" id="Token-9a5715a410004023b35d8e46eb8e12e6" name="Token" />
+                    <script src="../www.google.com/recaptcha/apif78f.js?render=6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK"></script>
+                    <script>
+                        grecaptcha.ready(function() {
+                            grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {
+                                    action: "/contact"
+                                })
+                                .then(function(token) {
+                                    document.getElementById("Token-9a5715a410004023b35d8e46eb8e12e6").value = token
+                                });
+                        });
+                    </script>
+
+
+                    <p id="errorFills" style="margin-bottom:10px; color: red;"></p>
+                    <div id="emtry_contact" class="form-signup form_contact clearfix">
+                        <div class="row row-8Gutter">
+                            <div class="col-md-6">
+                                <fieldset class="form-group">
+                                    <input type="text" placeholder="Họ tên*" name="contact[name]" id="name" class="form-control  form-control-lg" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset class="form-group">
+                                    <input type="email" placeholder="Email*" name="contact[email]" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63}$" data-validation="email" id="email" class="form-control form-control-lg" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset class="form-group">
+                                    <input type="text" placeholder="Điện thoại*" name="contact[phone]" class="form-control form-control-lg" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <fieldset class="form-group">
+                            <textarea name="contact[body]" placeholder="Nhập nội dung*" id="comment" class="form-control form-control-lg" rows="6" Required></textarea>
+                        </fieldset>
+                        <div>
+
+                            <button type="submit" class="btn btn-primary" style="padding:0 40px;text-transform: inherit;">Gửi liên hệ</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

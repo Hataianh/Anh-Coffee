@@ -1,0 +1,175 @@
+<div class="header-category">
+    <div class="container">
+        <ul *ngIf="list_danhmuc && list_danhmuc.length > 0">
+
+            <li *ngFor="let dm of list_danhmuc">
+                <a [routerLink]="['/category',dm.maDanhMuc]" title="{{dm.tenDanhMuc}}">
+                    <span class="icon"><img class="img-responsive"
+                    src="/assets/images/{{dm.anhDanhMuc}}"
+                    alt="icon"></span> {{dm.tenDanhMuc}}
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+<h1 class="hidden">AnhCoffee - </h1>
+
+<div class="blog_template">
+    <section class="bread-crumb">
+        <span class="crumb-border"></span>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 a-left">
+                    <div class="breadcrumb-container">
+                        <ul class="breadcrumb">
+                            <li class="home">
+                                <a itemprop="url" [routerLink]="['/']" title="Trang chủ"><span>Trang chủ</span></a>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </li>
+
+
+                            <li><strong><span>Tin tức</span></strong></li>
+
+
+                        </ul>
+                    </div>
+
+                    <div class="title-page ">Tin tức</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <section class="right-content col-lg-12 col-md-12">
+                <div class="box-heading hidden">
+                    <h1 class="title-head">Tin tức</h1>
+                </div>
+
+
+                <section class="list-blogs blog-main">
+
+                    <article class="blog-item" *ngFor="let tt of tintuc">
+                        <div class="blog-item-thumbnail">
+                            <a [routerLink]="['/newsdetail', tt.maTinTuc]" title="{{tt.tieuDe}}">
+
+                                <picture>
+                                    <source media="(max-width: 480px)" srcset="/assets/images/{{tt.anhDaiDien}}">
+                                    <source media="(min-width: 481px) and (max-width: 767px)" srcset="/assets/images/{{tt.anhDaiDien}}">
+                                    <source media="(min-width: 768px) and (max-width: 1023px)" srcset="/assets/images/{{tt.anhDaiDien}}">
+                                    <source media="(min-width: 1024px) and (max-width: 1199px)" srcset="/assets/images/{{tt.anhDaiDien}}">
+                                    <source media="(min-width: 1200px)" srcset="/assets/images/{{tt.anhDaiDien}}">
+                                    <img src="/assets/images/{{tt.anhDaiDien}}" style="max-width:100%; height: 200px;" class="img-responsive" alt="{{tt.tieuDe}}">
+                                </picture>
+
+                            </a>
+                        </div>
+                        <div class="blog-item-info">
+                            <a [routerLink]="['/newsdetail', tt.maTinTuc]" title="{{tt.tieuDe}}">
+                                <h3 class="blog-item-name">{{tt.tieuDe}}</h3>
+                            </a>
+                            <div class="blog-item-meta">
+                                <div class="post-author">
+                                    {{tt.nguoiDang}}
+                                </div>
+                                <div class="post-time">
+                                    {{tt.ngayDang|date}}
+                                </div>
+                                <div class="post-comment">
+                                    <span>0</span> bình luận
+                                </div>
+                            </div>
+                            <p class="blog-item-summary margin-bottom-5" [innerHTML]="tt.noiDung"> </p>
+
+                        </div>
+                    </article>
+
+                    <!-- <article class="blog-item">
+                        <div class="blog-item-thumbnail">
+                            <a href="tinh-yeu-va-ca-phe.html" title="TÌNH YÊU VÀ CÀ PHÊ">
+
+                                <picture>
+                                    <source media="(max-width: 480px)" srcset="assets/images/blog25456.jpg">
+                                    <source media="(min-width: 481px) and (max-width: 767px)" srcset="assets/images/blog25456.jpg">
+                                    <source media="(min-width: 768px) and (max-width: 1023px)" srcset="assets/images/blog25456.jpg">
+                                    <source media="(min-width: 1024px) and (max-width: 1199px)" srcset="assets/images/blog25456.jpg">
+                                    <source media="(min-width: 1200px)" srcset="assets/images/blog25456.jpg">
+                                    <img src="assets/images/blog25456.jpg" style="max-width:100%;" class="img-responsive" alt="TÌNH YÊU VÀ CÀ PHÊ">
+                                </picture>
+
+                            </a>
+                        </div>
+                        <div class="blog-item-info">
+                            <a href="tinh-yeu-va-ca-phe.html" title="TÌNH YÊU VÀ CÀ PHÊ">
+                                <h3 class="blog-item-name">TÌNH YÊU VÀ CÀ PHÊ</h3>
+                            </a>
+                            <div class="blog-item-meta">
+                                <div class="post-author">
+                                    Nguyễn Hữu Mạnh
+                                </div>
+                                <div class="post-time">
+                                    04/04/2019
+                                </div>
+                                <div class="post-comment">
+                                    <span>0</span> bình luận
+                                </div>
+                            </div>
+                            <p class="blog-item-summary margin-bottom-5"> TÌNH YÊU VÀ CÀ PHÊ Yêu một người cũng giống yêu một hương vị cà phê. Có thể mất rất ít thời gian để thích, để khám phá. Nhưng cả tình ...</p>
+
+                        </div>
+                    </article>
+
+                    <article class="blog-item">
+                        <div class="blog-item-thumbnail">
+                            <a href="lang-nghe-ca-phe-ke-chuyen.html" title="LẮNG NGHE CÀ PHÊ KỂ CHUYỆN">
+
+                                <picture>
+                                    <source media="(max-width: 480px)" srcset="assets/images/blog11d91.jpg">
+                                    <source media="(min-width: 481px) and (max-width: 767px)" srcset="assets/images/blog11d91.jpg">
+                                    <source media="(min-width: 768px) and (max-width: 1023px)" srcset="assets/images/blog11d91.jpg">
+                                    <source media="(min-width: 1024px) and (max-width: 1199px)" srcset="assets/images/blog11d91.jpg">
+                                    <source media="(min-width: 1200px)" srcset="assets/images/blog11d91.jpg">
+                                    <img src="assets/images/blog11d91.jpg" style="max-width:100%;" class="img-responsive" alt="LẮNG NGHE CÀ PHÊ KỂ CHUYỆN">
+                                </picture>
+
+                            </a>
+                        </div>
+                        <div class="blog-item-info">
+                            <a href="lang-nghe-ca-phe-ke-chuyen.html" title="LẮNG NGHE CÀ PHÊ KỂ CHUYỆN">
+                                <h3 class="blog-item-name">LẮNG NGHE CÀ PHÊ KỂ CHUYỆN</h3>
+                            </a>
+                            <div class="blog-item-meta">
+                                <div class="post-author">
+                                    Nguyễn Hữu Mạnh
+                                </div>
+                                <div class="post-time">
+                                    04/04/2019
+                                </div>
+                                <div class="post-comment">
+                                    <span>0</span> bình luận
+                                </div>
+                            </div>
+                            <p class="blog-item-summary margin-bottom-5">
+
+                                Cuộc đời cafe, cũng như cuộc đời của con người, cũng phải 9 tháng 10 ngày thai nghén mới được thu hoạch. Café cũng có quãng thời g...</p>
+
+                        </div>
+                    </article> -->
+
+                    <div class="text-xs-left">
+
+
+                    </div>
+                </section>
+
+
+            </section>
+
+
+        </div>
+    </div>
+</div>

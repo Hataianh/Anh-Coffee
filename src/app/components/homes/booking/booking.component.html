@@ -1,0 +1,127 @@
+<div class="header-category">
+    <div class="container">
+        <ul *ngIf="list_danhmuc && list_danhmuc.length > 0">
+
+            <li *ngFor="let dm of list_danhmuc">
+                <a [routerLink]="['/category',dm.maDanhMuc]" title="{{dm.tenDanhMuc}}">
+                    <span class="icon"><img class="img-responsive"
+                    src="/assets/images/{{dm.anhDanhMuc}}"
+                    alt="icon"></span> {{dm.tenDanhMuc}}
+                </a>
+            </li>
+
+
+
+
+        </ul>
+    </div>
+</div>
+
+<h1 class="hidden">AnhCoffee - </h1>
+<section class="bread-crumb">
+    <span class="crumb-border"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 a-left">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a itemprop="url" href="index.html" title="Trang chủ"><span >Trang chủ</span></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+
+                        <li><strong><span >Đặt bàn</span></strong></li>
+
+                    </ul>
+
+                </div>
+                <div class="title-page ">Đặt bàn</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-title category-title hidden">
+                    <h1 class="title-head"><a href="#">Đặt bàn</a></h1>
+                </div>
+                <div class="content-page rte">
+                    <div class="box-dat-ban">
+                        <div class="left-dat-ban">
+                            <div class="text">
+                                <h3>Giờ mở cửa</h3>
+                                <p><b>Thứ 2 - Thứ 6 hàng tuần</b><br> 7h sáng - 11h sáng <br> 11h sáng - 10h tối
+                                </p>
+                                <p><b>Thứ 7, Chủ nhật hàng tuần</b><br> 8h sáng - 1h chiều <br> 1h chiều - 9h tối</p>
+                                <h3 class="border">Số điện thoại</h3>
+                                <a href="tel:0567233336">0567 233 336</a>
+                            </div>
+                        </div>
+                        <div class="right-dat-ban">
+                            <h3 class="text-center space-20">Gọi ngay cho chúng tôi để đặt bàn</h3>
+                            <form accept-charset="utf-8" action="https://halucafe.mysapo.net/contact" id="contact" method="post">
+                                <input name="FormType" type="hidden" value="contact" />
+                                <input name="utf8" type="hidden" value="true" /><input type="hidden" id="Token-8c2ab9eb64784879b5370873c82c3a50" name="Token" />
+                                <script src="../www.google.com/recaptcha/apif78f.js?render=6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK"></script>
+                                <script>
+                                    grecaptcha.ready(function() {
+                                        grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {
+                                                action: "/contact"
+                                            })
+                                            .then(function(token) {
+                                                document.getElementById("Token-8c2ab9eb64784879b5370873c82c3a50").value = token
+                                            });
+                                    });
+                                </script>
+
+
+                                <p id="errorFills" style="margin-bottom:10px; color: red;"></p>
+                                <div id="emtry_contact" class="form-signup form_contact clearfix">
+                                    <div class="row row-8Gutter">
+                                        <div class="col-md-6">
+                                            <fieldset class="form-group">
+                                                <i class="fa fa fa-male"></i>
+                                                <input type="text" placeholder="Họ tên*" name="contact[name]" id="name" class="form-control  form-control-lg" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset class="form-group">
+                                                <i class="fa fa-phone"></i>
+                                                <input type="text" placeholder="Điện thoại*" name="contact[phone]" class="form-control form-control-lg" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
+                                            </fieldset>
+                                        </div>
+
+                                        <input type="text" name="contact[email]" id="email" value="halutheme@gmail.com" class="form-control date-input form-control-lg hidden">
+
+                                        <div class="col-md-6">
+                                            <fieldset class="form-group">
+                                                <i class="fa fa-calendar"></i>
+                                                <input type="date" placeholder="Ngày*" name="contact[date]" id="date" class="form-control date-input form-control-lg" required>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset class="form-group">
+                                                <i class="fa fa-clock-o"></i>
+                                                <input type="time" placeholder="Giờ" name="contact[time]" id="time" class="form-control time-input form-control-lg" required>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <fieldset class="form-group">
+                                        <textarea name="contact[body]" placeholder="Nhập nội dung*" id="comment" class="form-control form-control-lg" rows="6" Required></textarea>
+                                    </fieldset>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary" style="padding:0 40px;text-transform: inherit;">Đặt bàn ngay</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

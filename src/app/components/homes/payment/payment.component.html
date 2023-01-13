@@ -1,0 +1,148 @@
+<div class="header-category">
+    <div class="container">
+        <ul *ngIf="list_danhmuc && list_danhmuc.length > 0">
+
+            <li *ngFor="let dm of list_danhmuc">
+                <a [routerLink]="['/category',dm.maDanhMuc]" title="{{dm.tenDanhMuc}}">
+                    <span class="icon"><img class="img-responsive"
+                  src="/assets/images/{{dm.anhDanhMuc}}"
+                  alt="icon"></span> {{dm.tenDanhMuc}}
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<h1 class="hidden">AnhCoffee - </h1>
+<section class="bread-crumb">
+    <span class="crumb-border"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 a-left">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a itemprop="url" href="/" title="Trang chủ"><span>Trang chủ</span></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+
+                        <li><strong><span>Thanh toán</span></strong></li>
+
+                    </ul>
+
+                </div>
+                <div class="title-page ">Thanh toán</div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+
+    <section class="wrap_page">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-cart title_cart_pc hidden-sm hidden-xs">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4" *ngIf="list && list.length > 0">
+            <h1 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Giỏ hàng</span>
+            </h1>
+            <ul class="list-group mb-3 sticky-top">
+                <li *ngFor="let c of list" class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h5 class="my-0">Số lượng: {{c.quantity}}</h5>
+                        <small class="text-muted">{{c.tenSanPham}}</small>
+                    </div>
+                    <span class="text-muted">{{c.gia * c.quantity| currency: 'VND':'symbol':'3.0-1'}}</span>
+                </li>
+
+                <!-- <li class="list-group-item d-flex justify-content-between bg-light">
+                    <div class="text-success">
+                        <h5 class="my-0">Mã giảm giá</h5>
+                        <small>EXAMPLECODE</small>
+                    </div>
+                    <span class="text-success">-$5</span>
+                </li> -->
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Thành tiền</span>
+                    <strong>{{tTong| currency: 'VND':'symbol':'3.0-1'}}</strong>
+                </li>
+                <form class="card p-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Mã giảm giá">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary">Áp dụng</button>
+                        </div>
+                    </div>
+                </form>
+
+            </ul>
+
+        </div>
+        <div class="col-md-8 order-md-1">
+            <h1 class="mb-3">Thông tin thanh toán</h1>
+            <div class="text-danger">(<span>*</span>) Bắt buộc</div>
+            <form class="needs-validation" novalidate="" [formGroup]="frmKhach" (ngSubmit)="onSubmit(frmKhach.value)">
+                <div class="row">
+                    <div class="col-md-11 mb-3">
+                        <label for="name">Họ tên<span class="text-danger">*</span></label>
+                        <div *ngIf="hoten.invalid && (hoten.dirty || hoten.touched)">
+                            <div style="font-style:italic;" class="text-danger" *ngIf="hoten.errors?.['required']">Họ tên không được rỗng</div>
+                            <div style="font-style:italic;" class="text-danger" *ngIf="hoten.errors?.['minlength']">
+                                Họ tên không được nhỏ hơn 3 ký tự
+                            </div>
+                            <div style="font-style:italic;" class="text-danger" *ngIf="hoten.errors?.['maxlength']">
+                                Họ tên không được lớn hơn 30 ký tự
+                            </div>
+                        </div>
+                        <input formControlName="name" type="text" ngModel class="form-control" id="name" placeholder="Họ tên" value="">
+
+                    </div>
+                    <div class="col-md-11 mb-3">
+                        <label for="email">Email</label>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <div style="font-style:italic;" class="text-danger" *ngIf="email.errors?.['email']">Không đúng định dạng email</div>
+                        </div>
+                        <input formControlName="email" type="text" ngModel class="form-control" id="email" placeholder="you@example.com">
+                    </div>
+                    <div class="col-md-11 mb-3">
+                        <label for="phone">Số điện thoại<span class="text-danger">*</span></label>
+                        <div *ngIf="sodienthoai.invalid && (sodienthoai.dirty || sodienthoai.touched)">
+                            <div style="font-style:italic;" class="text-danger" *ngIf="sodienthoai.errors?.['required']">Số điện thoại không được rỗng</div>
+                            <div style="font-style:italic;" class="text-danger" *ngIf="sodienthoai.errors?.['pattern']">
+                                Không đúng định dạng số điện thoại
+                            </div>
+                        </div>
+                        <input formControlName="phone" type="text" ngModel class="form-control" id="phone" placeholder="Số điện thoại" value="" required="">
+                    </div>
+                    <div class="col-md-11 mb-3">
+                        <label for="address">Địa chỉ<span class="text-danger">*</span></label>
+                        <div *ngIf="diachi.invalid && (diachi.dirty || diachi.touched)">
+                            <div style="font-style:italic;" class="text-danger" *ngIf="diachi.errors?.['required']">Địa chỉ không được rỗng</div>
+                        </div>
+                        <input formControlName="address" type="text" ngModel class="form-control" id="address" placeholder="Địa chỉ">
+
+                    </div>
+                    <div class="col-md-11 mb-3">
+                        <label for="note">Ghi chú</label>
+                        <input formControlName="note" type="text" ngModel class="form-control" id="note" placeholder="Ghi chú">
+                    </div>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info">
+                    <label class="custom-control-label" for="save-info">Ghi nhớ thông tin</label>
+                </div>
+                <button [disabled]="frmKhach.invalid" [ngStyle]="{'background-color':frmKhach.invalid?'#F4F6F8':'#e4b95b'}" class="col-md-11 btn btn-primary btn-lg btn-block mb-4" type="submit">Đặt hàng</button>
+            </form>
+        </div>
+    </div>
+</div>

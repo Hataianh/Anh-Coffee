@@ -1,0 +1,56 @@
+<div class="header-category">
+    <div class="container">
+        <ul *ngIf="list_danhmuc && list_danhmuc.length > 0">
+
+            <li *ngFor="let dm of list_danhmuc">
+                <a [routerLink]="['/category',dm.maDanhMuc]" title="{{dm.tenDanhMuc}}">
+                    <span class="icon"><img class="img-responsive"
+                    src="/assets/images/{{dm.anhDanhMuc}}"
+                    alt="icon"></span> {{dm.tenDanhMuc}}
+                </a>
+            </li>
+
+
+
+
+        </ul>
+    </div>
+</div>
+
+<h1 class="hidden">AnhCoffee - </h1>
+<section class="bread-crumb">
+    <span class="crumb-border"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 a-left">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a itemprop="url" [routerLink]="['/']" title="Trang chủ"><span>Trang chủ</span></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+
+                        <li><strong><span>Giới thiệu</span></strong></li>
+
+                    </ul>
+                </div>
+
+                <div class="title-page ">Giới thiệu</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 ">
+                <div class="page-title category-title">
+                    <h1 class="title-head"><a href="#">Giới thiệu</a></h1>
+                </div>
+                <div class="content-page rte">
+                    <p>Nội dung trang giới thiệu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

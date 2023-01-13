@@ -1,0 +1,349 @@
+<div class="header-category">
+    <div class="container">
+        <ul *ngIf="list_danhmuc && list_danhmuc.length > 0">
+
+            <li *ngFor="let dm of list_danhmuc">
+                <a [routerLink]="['/category',dm.maDanhMuc]" title="{{dm.tenDanhMuc}}">
+                    <span class="icon"><img class="img-responsive"
+                    src="/assets/images/{{dm.anhDanhMuc}}"
+                    alt="icon"></span> {{dm.tenDanhMuc}}
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+<h1 class="hidden">AnhCoffee - </h1>
+<section class="bread-crumb" *ngIf="item">
+    <span class="crumb-border"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 a-left">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a itemprop="url" [routerLink]="['/']" title="Trang chủ"><span>Trang chủ</span></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <a itemprop="url" [routerLink]="['/category',item.maDanhMuc]" title="{{item.tenDanhMuc}}"><span>{{item.tenDanhMuc}}</span></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+                        <li><strong><span>{{item.tenSanPham}}</span></strong>
+                            <li>
+                    </ul>
+                </div>
+                <div class="title-page hidden">{{item.tenSanPham}}</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 details-product">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-lg-5 col-md-5">
+                                <div class="relative product-image-block no-thum">
+                                    <div class="large-image">
+                                        <a href="" class="large_image_url" data-rel="prettyPhoto[product-gallery]">
+                                            <img id="zoom_01" class="img-responsive center-block has-zoom" src="/assets/images/{{item.anhDaiDien}}" alt="{{item.tenSanPham}}">
+                                        </a>
+                                        <div class="hidden">
+                                            <!-- <div class="item">
+                                                <a href="../bizweb.dktcdn.net/100/351/580/products/product212f2.jpg?v=1555054897897" data-image="https://bizweb.dktcdn.net/100/351/580/products/product2.jpg?v=1555054897897" data-zoom-image="https://bizweb.dktcdn.net/100/351/580/products/product2.jpg?v=1555054897897"
+                                                    data-rel="prettyPhoto[product-gallery]">
+                                                </a>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div *ngIf="item && item.chiTietAnhSanPhams  && item.chiTietAnhSanPhams.length > 0" id="gallery_01" class="owl-carousel owl-theme" data-nav="true" data-lg-items="4" data-md-items="4" data-sm-items="6" data-xs-items="3" data-xss-items="3" data-margin="5"
+                                        data-auto-height="true">
+                                        <div class="item" *ngFor="let it of item.chiTietAnhSanPhams">
+                                            <a class="border-radius-10" href="javascript:void(0);">
+                                                <img src="/{{it.anh}}" class="img-responsive" alt="chai-latte">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 details-pro">
+                                <h1 class="title-head" itemprop="name">{{item.tenSanPham}}</h1>
+                                <div class="reviews_details_product">
+                                    <div class="sapo-product-reviews-badge sapo-product-reviews-badge-detail" data-id="14199192"></div>
+                                </div>
+                                <div class="details-sticky details-pro">
+                                    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                        <link itemprop="availability" href="https://schema.org/InStock" />
+                                        <div class="information">
+                                            <p><span>Thương hiệu:</span> {{item.tenNhaSanXuat}}</p>
+                                            <p class="inventory_quantity">
+                                                <span>Tình trạng: </span> Còn hàng
+                                            </p>
+
+                                        </div>
+                                        <div class="price-box clearfix">
+
+                                            <span class="special-price ">
+                        <span class="price product-price">{{item.gia| currency: 'VND':'symbol':'3.0-1'}}</span>
+
+                                            </span>
+                                            <!-- Giá Khuyến mại -->
+
+                                            <!-- <span class="old-price " itemprop="priceSpecification" itemscope itemtype="https://schema.org/priceSpecification">
+                      <del class="price product-price-old z1" >80.000₫</del>
+                      <meta itemprop="price" content="80000">
+                      <meta itemprop="priceCurrency" content="VND">
+                    </span> -->
+                                            <!-- Giá gốc -->
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-product">
+                                        <form enctype="multipart/form-data" id="add-to-cart-form" method="post" class="form-inline">
+
+                                            <div class="box-variant clearfix ">
+
+                                                <input type="hidden" name="variantId" value="24002902" />
+
+                                            </div>
+                                            <div class="form-group form-groupx">
+
+                                                <!-- <div class="custom custom-btn-number form-control ">
+                                                    <span class="quantity-span hidden">Số lượng:</span>
+                                                    <span class="qtyminus" data-field="quantity">-</span>
+                                                    <input type="text" class="input-text qty" data-field='quantity' title="Só lượng" value="1" maxlength="3" id="qty" name="quantity" onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;" onChange="if(this.value == 0)this.value=1;">
+                                                    <span class="qtyplus" data-field="quantity">+</span>
+                                                </div> -->
+
+
+                                                <button (click)="_addToCart(item)" type="submit" class="btn btn-lg btn-gray btn-cart btn_buy add_to_cart">
+                          <span>Mua Hàng</span>
+                        </button>
+
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <div class="product-summary">
+                                    <div class="rte margin-bottom-0 ">
+                                        <p [innerHTML]="item.moTaSanPham"></p>
+                                    </div>
+                                </div>
+                                <div class="social-sharing">
+                                    <div class="social-media" data-permalink="cafe-ice-latte.html">
+                                        <label>Chia sẻ: </label>
+                                        <a target="_blank" href="http://www.facebook.com/sharer.php?u=" class="share-facebook" title="Chia sẻ lên Facebook">
+                                            <i class="fa fa-facebook-official"></i>
+                                        </a>
+
+
+
+                                        <a target="_blank" href="http://twitter.com/share?url=" class="share-twitter" title="Chia sẻ lên Twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+
+
+
+                                        <a target="_blank" href="../pinterest.com/pin/create/button/index23e2.html?url=" class="share-pinterest" title="Chia sẻ lên pinterest">
+                                            <i class="fa fa-pinterest"></i>
+                                        </a>
+
+
+
+
+
+                                        <a target="_blank" href="http://plus.google.com/share?url=" class="share-google" title="+1">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-xs-12 col-lg-12 col-md-12 margin-top-40 margin-bottom-30">
+                        <!-- Nav tabs -->
+                        <div class="product-tab e-tabs">
+                            <ul class="tabs tabs-title clearfix">
+
+                                <li class="tab-link" data-tab="tab-1">
+                                    <h4><span>Thông tin sản phẩm</span></h4>
+                                </li>
+
+
+                                <li class="tab-link" data-tab="tab-2">
+                                    <h4><span>Chính sách</span></h4>
+                                </li>
+
+
+                                <li class="tab-link" data-tab="tab-3">
+                                    <h4><span>Đánh giá sản phẩm</span></h4>
+                                </li>
+
+                            </ul>
+
+                            <div id="tab-1" class="tab-content current">
+                                <div class="rte">
+
+                                    <p [innerHTML]="item.moTaSanPham"></p>
+
+                                </div>
+                            </div>
+
+
+                            <div id="tab-2" class="tab-content ">
+                                Nội dung tùy chỉnh viết ở đây
+                            </div>
+
+
+                            <div id="tab-3" class="tab-content">
+                                <div id="sapo-product-reviews" class="sapo-product-reviews" data-id="14199192">
+                                    <div id="sapo-product-reviews-noitem" style="display: none;">
+                                        <div class="content">
+                                            <p data-content-text="language.suggest_noitem"></p>
+                                            <div class="product-reviews-summary-actions">
+                                                <button type="button" class="btn-new-review" onclick="BPR.newReview(this); return false;" data-content-str="language.newreview"></button>
+                                            </div>
+                                            <div id="noitem-bpr-form_" data-id="formId" class="noitem-bpr-form" style="display:none;">
+                                                <div class="sapo-product-reviews-form"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+                <div class="related-product">
+                    <hr>
+                    <div class="title-text text-center">
+                        <h2><a title="Sản phẩm liên quan">Sản phẩm liên quan</a></h2>
+                        <p>Bạn có thể tham khảo thêm 1 số sản phẩm tương tự ở bên dưới</p>
+                    </div>
+                    <div class="products owl-carousel owl-theme products-view-grid" data-nav="true" data-lg-items="4" data-md-items="4" data-sm-items="3" data-xs-items="3" data-xss-items="2" data-margin="10">
+                        <h1>abc</h1>
+                        <div class="product-box" *ngFor="let lq of lien_quan">
+                            <div class="product-thumbnail">
+
+
+
+                                <a [routerLink]="['/detail',lq.maSanPham]" title="{{lq.tenSanPham}}" class="image_thumb">
+
+                                    <img class="img-responsive center-block " src="/assets/images/{{lq.anhDaiDien}}" alt="{{lq.tenSanPham}}">
+
+                                </a>
+
+                                <div class="product-action clearfix hidden-md hidden-sm hidden-xs">
+                                    <form method="post" class="variants form-nut-grid" data-id="product-actions-14199852" enctype="multipart/form-data">
+
+                                        <input type="hidden" name="variantId" value="24016352" />
+                                        <button class="btn-buy btn-cart btn btn-gray   left-to add_to_cart" title="Đặt hàng"><span><i
+                          class="fa fa-cart-plus" aria-hidden="true"></i></span>
+                    </button>
+
+                                    </form>
+                                </div>
+
+
+                                <a [routerLink]="['/detail',lq.maSanPham]" data-handle="vietnamese-coffee" class="btn-white btn_view btn right-to quick-view" title="Xem nhanh">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+
+                            </div>
+                            <div class="product-info a-left">
+                                <h3 class="product-name text2line"><a [routerLink]="['/detail',lq.maSanPham]" title="{{lq.tenSanPham}}">{{lq.tenSanPham}}</a></h3>
+
+
+
+
+                                <div class="price-box clearfix">
+
+                                    <div class="special-price">
+                                        <span class="price product-price">{{lq.gia| currency: 'VND':'symbol':'3.0-1'}}</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="bizweb-product-reviews-badge" data-id="14199852"></div>
+                            </div>
+
+                        </div>
+                        <div class="product-box  ">
+                            <div class="product-thumbnail">
+
+
+
+                                <a href="hazelnut-ice-blended.html" title="HAZELNUT ICE BLENDED" class="image_thumb">
+
+                                    <img class="img-responsive center-block " src="/assets/product2-9f7b1cca-7c88-4df7-8315-1204b77afec7.jpg" alt="HAZELNUT ICE BLENDED">
+
+                                </a>
+
+                                <div class="product-action clearfix hidden-md hidden-sm hidden-xs">
+                                    <form action="https://halucafe.mysapo.net/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-14199842" enctype="multipart/form-data">
+
+                                        <button class="btn-cart btn btn-gray left-to" type="button" title="Chọn sản phẩm" onclick="window.location.href='hazelnut-ice-blended.html'">
+                                <i class="fa fa-link"></i></button>
+
+                                    </form>
+                                </div>
+
+
+                                <a href="hazelnut-ice-blended.html" data-handle="hazelnut-ice-blended" class="btn-white btn_view btn right-to quick-view" title="Xem nhanh">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+
+                            </div>
+                            <div class="product-info a-left">
+                                <h3 class="product-name text2line"><a href="hazelnut-ice-blended.html" title="HAZELNUT ICE BLENDED">HAZELNUT ICE BLENDED</a></h3>
+
+
+
+
+                                <div class="price-box clearfix">
+
+                                    <div class="special-price">
+                                        <span class="price product-price">80.000₫</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="bizweb-product-reviews-badge" data-id="14199842"></div>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

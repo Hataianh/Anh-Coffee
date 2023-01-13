@@ -1,0 +1,154 @@
+<section class="bread-crumb">
+    <span class="crumb-border"></span>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 a-left">
+                <div class="breadcrumb-container">
+                    <ul class="breadcrumb">
+                        <li class="home">
+                            <a itemprop="url" href="/" title="Trang chủ"><span>Trang chủ</span></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+
+                        <li><strong><span>Giỏ hàng</span></strong></li>
+
+                    </ul>
+
+                </div>
+                <div class="title-page ">Giỏ hàng</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wrap_page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="header-cart title_cart_pc hidden-sm hidden-xs">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="main-cart-page main-container col1-layout">
+    <div class="main container hidden-xs hidden-sm">
+
+        <div class="col-main cart_desktop_page cart-page">
+            <div class="cart page_cart hidden-xs">
+                <form action="/cart" method="post" novalidate="" class="margin-bottom-0">
+                    <div class="bg-scroll" *ngIf="list && list.length > 0">
+                        <div class="cart-thead">
+                            <div style="width: 18%" class="a-center">Ảnh sản phẩm</div>
+                            <div style="width: 32%" class="a-center">Tên sản phẩm</div>
+                            <div style="width: 17%" class="a-center"><span class="nobr">Đơn giá</span></div>
+                            <div style="width: 14%" class="a-center">Số lượng</div>
+                            <div style="width: 14%" class="a-center">Thành tiền</div>
+                            <div style="width: 5%" class="a-center">Xoá</div>
+                        </div>
+                        <div class="cart-tbody" *ngFor="let c of list">
+                            <div class="item-cart productid-24015649">
+                                <div style="width: 18%" class="image">
+                                    <a class="product-image" title="{{c.tenSanPham}}" [routerLink]="['/detail',c.maSanPham]"><img width="75" height="auto" alt="{{c.tenSanPham}}" src="/assets/images/{{c.anhDaiDien}}"></a>
+                                </div>
+                                <div style="width: 32%" class="a-center">
+                                    <h3 class="product-name"> <a class="text2line" [routerLink]="['/detail',c.maSanPham]" title="{{c.tenSanPham}}">{{c.tenSanPham}}</a> </h3><span class="variant-title hidden">Default Title</span></div>
+                                <div style="width: 17%" class="a-center"><span class="item-price"> <span class="price">{{c.gia| currency: 'VND':'symbol':'3.0-1'}}</span></span>
+                                </div>
+                                <div style="width: 14%" class="a-center">
+                                    <div class="input_qty_pr">
+                                        <input class="variantID" type="hidden" name="variantId" value="24015649">
+                                        <button class="reduced_pop items-count btn-minus" type="button" (click)="Giam(c.maSanPham)">-</button>
+                                        <input (ngModel)="c.quantity" type="text" maxlength="12" readonly="" min="0" class="check_number_here input-text number-sidebar input_pop input_pop qtyItem24015649" id="qtyItem24015649" name="Lines" size="4" value="{{c.quantity}}">
+                                        <button class="increase_pop items-count btn-plus" type="button" (click)="Tang(c.maSanPham)">+</button>
+
+                                    </div>
+                                </div>
+                                <div style="width: 14%" class="a-center"><span class="cart-price"> <span class="price">{{c.gia * c.quantity| currency: 'VND':'symbol':'3.0-1'}}</span> </span>
+                                </div>
+                                <div style="width: 5%" class="a-center"><a class="remove-itemx remove-item-cart" title="Xóa" href="javascript:;" data-id="24015649"><span><i class="fa fa-trash-o" (click)="Xoa(c.maSanPham)"></i></span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row margin-top-20  margin-bottom-40" *ngIf="list && list.length > 0">
+                    <div class="col-lg-7 col-md-7">
+                        <div class="form-cart-button">
+                            <div class=""><a [routerLink]="['/product']" class="form-cart-continue"><i class="fa fa-long-arrow-left"></i> Tiếp tục mua hàng</a></div>
+
+                            <div class=""><a (click)="updateCart()" class="form-cart-continue"><i class="fa fa-refresh"></i> Cập nhật giỏ hàng</a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="form-cart-button">
+                            <div class=""><a (click)="XoaCart()" class="form-cart-delete"><i class="fa fa-trash"></i> Xóa giỏ hàng</a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 bg_cart shopping-cart-table-total">
+                        <div class="table-total">
+                            <table class="table ">
+                                <tbody>
+                                    <tr class="hidden">
+                                        <td>Tiền vận chuyển</td>
+                                        <td class="txt-right a-right">Tính khi thanh toán</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="total-text">Tổng tiền thanh toán</td>
+                                        <td class="1 txt-right totals_price price_end a-right">{{tTong| currency: 'VND':'symbol':'3.0-1'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div><a [routerLink]="['/payment']" class="btn-checkout-cart" title="Thanh toán">Tiến hành thanh toán</a></div>
+
+                </div>
+                <div class="row margin-top-20  margin-bottom-40" *ngIf="list && list.length == 0">
+                    <p>Chưa có sản phẩm nào trong giỏ hàng</p>
+                    <div class="form-cart-button">
+                        <div class=""><a [routerLink]="['/product']" class="form-cart-continue"><i class="fa fa-long-arrow-left"></i> Tiếp tục mua hàng</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="cart-mobile hidden-md hidden-lg container">
+        <form action="/cart" method="post" novalidate="" class="margin-bottom-0" *ngIf="list && list.length > 0">
+            <div class="title_cart_mobile">
+
+            </div>
+
+            <div class="header-cart-content" style="background:#fff;" *ngFor="let c of list">
+                <div class="cart_page_mobile content-product-list">
+                    <div class="item-product item-mobile-cart item productid-24015649 ">
+                        <div class="item-product-cart-mobile">
+                            <a [routerLink]="['/detail',c.maSanPham]"> </a>
+                            <a class="product-images1" [routerLink]="['/detail',c.maSanPham]" title="{{c.tenSanPham}}"><img width="80" height="150" alt="{{c.tenSanPham}}" src="//bizweb.dktcdn.net/thumb/small/100/351/580/products/product4-cea6cdbf-a3f7-4737-be00-1d507f7c4c4c.jpg"></a>
+                        </div>
+                        <div class="title-product-cart-mobile">
+                            <h3><a class="text2line" [routerLink]="['/detail',c.maSanPham]" title="{{c.tenSanPham}}">{{c.tenSanPham}}</a></h3>
+                            <p>Giá: <span>{{c.gia| currency: 'VND':'symbol':'3.0-1'}}</span></p>
+                        </div>
+                        <div class="select-item-qty-mobile">
+                            <div class="txt_center in_put check_">
+                                <input class="variantID" type="hidden" name="variantId" value="24015649">
+                                <button class="reduced items-count btn-minus" (click)="Giam(c.maSanPham)" type="button">-</button>
+                                <input (ngModel)="c.quantity" type="number" maxlength="12" min="1" readonly="" class="check_number_here input-text mobile_input number-sidebar qtyMobile24015649" id="qtyMobile24015649" name="Lines" size="4" value="{{c.quantity}}">
+                                <button class="increase items-count btn-plus" (click)="Tang(c.maSanPham)" type="button">+</button>
+                            </div>
+                            <a class="button remove-item remove-item-cart" href="javascript:;" data-id="24015649" (click)="Xoa(c.maSanPham)">Xoá</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-cart-price">
+                    <div class="title-cart a-center"><span class="total_mobile a-center">Tổng tiền: <span class=" totals_price_mobile">{{c.gia * c.quantity| currency: 'VND':'symbol':'3.0-1'}}</span><span></span></span>
+                    </div>
+                    <div class="checkout"><button class="btn-proceed-checkout-mobile" title="Tiến hành thanh toán" type="button" [routerLink]="['/payment']"><span>Tiến hành thanh toán</span></button><button class="btn btn-white contin" title="Tiếp tục mua hàng" type="button"
+                            [routerLink]="['/product']"><span>Tiếp tục mua hàng</span></button></div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
